@@ -22,7 +22,7 @@ import static sample.cafekiosk.spring.domain.product.ProductType.HANDMADE;
  */
 @ActiveProfiles("test")
 //@SpringBootTest
-@DataJpaTest
+@DataJpaTest    //자동으로 rollback이 됨(@Transactinal이 달려있음)
 class ProductRepositoryTest {
 
     @Autowired
