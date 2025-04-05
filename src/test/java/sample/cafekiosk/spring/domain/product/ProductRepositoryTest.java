@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
+import sample.cafekiosk.spring.IntegrationTestSupport;
 
 import java.util.List;
 
@@ -18,10 +20,9 @@ import static sample.cafekiosk.spring.domain.product.ProductType.HANDMADE;
  * Persistence Layer - 데이터베이스 엑세스하는 계층
  * 단위테스트의 성격을 갖고 있다
  */
-@ActiveProfiles("test")
-//@SpringBootTest
-@DataJpaTest    //자동으로 rollback이 됨(@Transactinal이 달려있음)
-class ProductRepositoryTest {
+//@DataJpaTest    //자동으로 rollback이 됨(@Transactinal이 달려있음)
+@Transactional
+class ProductRepositoryTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductRepository productRepository;
